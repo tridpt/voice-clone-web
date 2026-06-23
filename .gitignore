@@ -1,0 +1,12 @@
+# Model weights (tải về khi chạy lần đầu)
+backend/model/
+
+# File audio người dùng tải lên & kết quả sinh ra
+storage/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env

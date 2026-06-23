@@ -1,0 +1,27 @@
+# Web framework
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+python-multipart==0.0.12
+
+# PyTorch — cài TRƯỚC coqui-tts.
+# Từ coqui-tts 0.27.4 PyTorch KHÔNG còn được cài kèm nên phải cài riêng:
+#   CPU:        pip install torch torchaudio
+#   GPU CUDA12: pip install torch torchaudio --index-url https://download.pytorch.org/whl/cu121
+# (xem thêm https://pytorch.org/get-started/locally/ để chọn đúng bản CUDA)
+torch>=2.1.0
+torchaudio>=2.1.0
+
+# TTS core (viXTTS dựa trên Coqui TTS - fork idiap được maintain)
+# Bản 0.27.x hỗ trợ Python 3.10 - 3.14.
+coqui-tts>=0.27.2
+
+# Tải model từ Hugging Face
+huggingface_hub>=0.23.0
+
+# Xử lý audio
+soundfile>=0.12.1
+
+# --- Tùy chọn: chuẩn hóa text tiếng Việt cho tự nhiên hơn ---
+# Hay lỗi build trên Python 3.13. Engine vẫn chạy được nếu thiếu (có fallback).
+# Bỏ comment nếu môi trường của bạn cài được:
+# vinorm>=2.0.7

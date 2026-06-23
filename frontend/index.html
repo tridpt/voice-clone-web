@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Voice Clone Studio - Tiếng Việt</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>🎙️ Voice Clone Studio</h1>
+    <p class="subtitle">Thu âm tạo dữ liệu huấn luyện và thử giọng clone tiếng Việt.</p>
+
+    <div class="tabs">
+      <button class="tab active" data-tab="studio">1. Thu âm dữ liệu</button>
+      <button class="tab" data-tab="test">2. Thử giọng clone</button>
+    </div>
+
+    <!-- ============ TAB STUDIO ============ -->
+    <section id="studio" class="tab-panel">
+      <div class="card progress-card">
+        <div class="row between">
+          <span>Tiến độ thu âm: <strong id="progressText">0/0</strong></span>
+          <button id="downloadDataset" class="btn btn-accent" disabled>⬇ Tải dataset.zip</button>
+        </div>
+        <div class="progress-bar"><div id="progressFill"></div></div>
+        <p class="hint">Đọc to, rõ từng câu. Thu đủ càng nhiều câu thì giọng train ra càng giống.</p>
+      </div>
+
+      <label class="consent card">
+        <input type="checkbox" id="consentStudio" />
+        Tôi xác nhận đây là giọng của tôi hoặc tôi có sự đồng ý hợp pháp để dùng
+        cho mục đích học tập / nghiên cứu.
+      </label>
+
+      <div id="sentenceList" class="sentence-list"></div>
+    </section>
+
+    <!-- ============ TAB TEST ============ -->
+    <section id="test" class="tab-panel hidden">
+      <div class="card">
+        <h2>Nguồn giọng tham chiếu</h2>
+        <p class="hint">Mặc định dùng các mẫu bạn đã thu ở tab Studio. Hoặc tải một file giọng mẫu riêng.</p>
+        <label class="file-label">
+          📁 Tải file giọng mẫu (tùy chọn)
+          <input type="file" id="refFile" accept="audio/*" hidden />
+        </label>
+        <span id="refStatus" class="status"></span>
+      </div>
+
+      <div class="card">
+        <h2>Câu cần đọc thử</h2>
+        <textarea id="testText" rows="3" maxlength="1000"
+          placeholder="Nhập câu tiếng Việt để nghe thử giọng clone..."></textarea>
+        <div class="counter"><span id="testCount">0</span>/1000</div>
+      </div>
+
+      <label class="consent card">
+        <input type="checkbox" id="consentTest" />
+        Tôi xác nhận có quyền sử dụng giọng nói này.
+      </label>
+
+      <button id="genBtn" class="btn btn-primary" disabled>Tạo giọng nói</button>
+      <span id="genStatus" class="status"></span>
+
+      <section id="resultCard" class="card hidden">
+        <h2>Kết quả</h2>
+        <audio id="resultPlayer" controls class="player"></audio>
+        <a id="downloadResult" class="btn" download="cloned_voice.wav">⬇ Tải về</a>
+      </section>
+    </section>
+  </main>
+
+  <script src="wav-recorder.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
