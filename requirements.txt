@@ -10,10 +10,16 @@ python-multipart==0.0.12
 # (xem thêm https://pytorch.org/get-started/locally/ để chọn đúng bản CUDA)
 torch>=2.1.0
 torchaudio>=2.1.0
+# Từ PyTorch 2.9 trở lên, coqui-tts cần torchcodec cho audio IO.
+torchcodec>=0.4
 
 # TTS core (viXTTS dựa trên Coqui TTS - fork idiap được maintain)
 # Bản 0.27.x hỗ trợ Python 3.10 - 3.14.
 coqui-tts>=0.27.2
+
+# coqui-tts 0.27.x dùng API của transformers 4.x (vd: isin_mps_friendly);
+# transformers 5.x đã bỏ nên phải giữ ở nhánh 4.
+transformers>=4.43,<5
 
 # Tải model từ Hugging Face
 huggingface_hub>=0.23.0
